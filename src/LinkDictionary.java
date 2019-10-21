@@ -28,9 +28,10 @@ public class LinkDictionary {
             Collections.reverse(list);
             Iterator i = list.iterator();
             while (i.hasNext()) {
-                System.out.print("Node " + (count++) + " : ");
                 System.out.println(i.next());
             }
+
+
         }
     }
 
