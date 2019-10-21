@@ -9,7 +9,7 @@ public class LinkDictionary {
             int count=1;
             File file = new File("unsorteddict.txt");
             LinkedList<String> list = new LinkedList<String>();
-
+            System.out.println("hey");
             try {
                 Scanner sc = new Scanner(new FileInputStream(file));
                 while (sc.hasNextLine()){
