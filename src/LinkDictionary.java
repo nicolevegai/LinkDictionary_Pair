@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 
 
 import static java.lang.System.out;
@@ -21,7 +22,9 @@ public class LinkDictionary {
                 if (dict.size() == 0) {
                     dict.add(line);
                 } else {
-                    //ordenar
+                    if (!sortList(line, dict)) {
+                        dict.add(line);
+                    }
 
                 }
                 line = reader.readLine();
@@ -41,6 +44,22 @@ public class LinkDictionary {
 
         }
     }
+    public static boolean sortList(String inputvalue, List list){
+        boolean retorno = false;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).toString().toLowerCase().compareTo(inputvalue.toLowerCase()) > 0) {
+                if(i == 0){
+                    list.add(0, inputvalue);
+                }else{
+                    list.add(i, inputvalue);
+                }
+                retorno = true;
+                break;
+            }
+        }
+        return retorno;
+    }
+
 }
 
 
