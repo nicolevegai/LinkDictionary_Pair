@@ -1,37 +1,48 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
-import java.util.*;
-import java.io.*;
+
+
+import static java.lang.System.out;
 
 public class LinkDictionary {
 
-        public static void main(String args[])throws IOException{
-            String content = new String();
-            int count=1;
-            File file = new File("unsorteddict.txt");
-            LinkedList<String> list = new LinkedList<String>();
-            System.out.println("hey");
-            try {
-                Scanner sc = new Scanner(new FileInputStream(file));
-                while (sc.hasNextLine()){
-                    content = sc.nextLine();
-                    list.add(content);
+    public static void main(String args[]) {
+
+        BufferedReader reader;
+        LinkedList<String> dict = new LinkedList<String>();
+        try {
+            reader = new BufferedReader(new FileReader("/Users/nicolevega/Desktop/prueba.txt"));//
+            String line = reader.readLine();
+            while (line != null) {
+                if (dict.size() == 0) {
+                    dict.add(line);
+                } else {
+                    //ordenar
+
                 }
-                sc.close();
-            }catch(FileNotFoundException fnf){
-                fnf.printStackTrace();
+                line = reader.readLine();
             }
-            catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("\nProgram terminated Safely...");
-            }
-
-            Collections.reverse(list);
-            Iterator i = list.iterator();
-            while (i.hasNext()) {
-                System.out.println(i.next());
+            reader.close();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("sorteddict.txt"));
+            for (int i = 0; i < dict.size(); i++) {
+                out.println(dict.get(i));
+                writer.write(dict.get(i).toString());
+                writer.newLine();
             }
 
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
     }
+}
+
+
+
 
